@@ -2,9 +2,6 @@ import React, { use, useEffect, useMemo, useState } from 'react'
 
 import './App.css'
 import TextArea from './components/TextArea'
-import { MdGTranslate } from "react-icons/md";
-import { debounce } from './utils/Helpers';
-
 const App: React.FC = () => {
 
   const [state, setState] = useState({
