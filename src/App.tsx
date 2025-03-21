@@ -1,4 +1,4 @@
-import React, { use, useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './App.css'
 import TextArea from './components/TextArea'
