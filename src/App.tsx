@@ -16,6 +16,9 @@ const App: React.FC = () => {
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
+    if (state.text.trim() === '') {
+      setState({ ...state, translatedText: '' });
+    }
     let timer: NodeJS.Timeout;
     if (state.text.trim() !== '') {
       timer = setTimeout(() => {
@@ -81,7 +84,7 @@ const App: React.FC = () => {
               {!loader ? <TextArea
                 value={state.translatedText}
                 onChange={() => { }}
-                placeholder='Target language'
+                placeholder='Translation Text'
                 className='text-area'
                 language={state.targetLanguage}
               /> :
