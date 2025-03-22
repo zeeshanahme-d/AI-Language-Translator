@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import './globleStyle.scss'
 import TextArea from './components/TextArea'
+import CustomSelect from './components/CustomSelect';
 const App: React.FC = () => {
 
   const [state, setState] = useState({
     text: '',
     translatedText: '',
-    sourceLanguage: 'auto',
-    targetLanguage: 'en',
+    sourceLanguage: 'en',
+    targetLanguage: 'ur',
     textError: '',
     wordCount: 0,
     tottleCount: 2000,
@@ -57,6 +58,9 @@ const App: React.FC = () => {
     }
   };
 
+  const handleSelectLanguage = (e: string, type: string) => {
+    setState({ ...state, [type]: e });
+  };
 
   return (
     <div className="App">
@@ -65,6 +69,7 @@ const App: React.FC = () => {
         <span className='subheading'>LinguaSpeak: Bridging Voices, Connecting Worlds.</span>
         <div className='content'>
           <div className='text-area-container'>
+            <CustomSelect onChange={(e: string) => { handleSelectLanguage(e, "sourceLanguage") }} value={state.sourceLanguage} />
             <div className='text-area-content'>
               <TextArea
                 value={state.text}
@@ -76,10 +81,11 @@ const App: React.FC = () => {
                 <span className='counter' style={{ color: state.wordCount >= state.tottleCount ? "red" : "#fff" }}>{state.wordCount}/{state.tottleCount}</span>
               </div>
             </div>
-
             <span className='error'>{state?.textError}</span>
           </div>
+
           <div className='text-area-container'>
+            <CustomSelect onChange={(e: string) => { handleSelectLanguage(e, "targetLanguage") }} value={state.targetLanguage} />
             <div className='text-area-content'>
               {!loader ? <TextArea
                 value={state.translatedText}
@@ -99,6 +105,7 @@ const App: React.FC = () => {
               }
             </div>
           </div>
+
         </div>
       </div>
     </div>
