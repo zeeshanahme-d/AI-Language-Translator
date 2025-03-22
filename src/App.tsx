@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
-import './App.css'
+import './globleStyle.scss'
 import TextArea from './components/TextArea'
 const App: React.FC = () => {
 
   const [state, setState] = useState({
     text: '',
     translatedText: '',
-    sourceLanguage: 'ur',
+    sourceLanguage: 'auto',
     targetLanguage: 'en',
     textError: '',
     wordCount: 0,
     tottleCount: 2000,
   });
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -38,7 +39,7 @@ const App: React.FC = () => {
 
   const translateText = async (text: string, sourceLang: string, targetLang: string) => {
     if (!state.text.trim() || state.textError) return;
-
+    setLoader(true);
     try {
       const response = await fetch(
         `https://lingva.ml/api/v1/${sourceLang}/${targetLang}/${encodeURIComponent(text)}`
@@ -48,6 +49,8 @@ const App: React.FC = () => {
     } catch (error) {
       console.error('Translation error:', error);
       setState((prev) => ({ ...prev, translatedText: 'Translation failed.' }));
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -75,13 +78,22 @@ const App: React.FC = () => {
           </div>
           <div className='text-area-container'>
             <div className='text-area-content'>
-              <TextArea
+              {!loader ? <TextArea
                 value={state.translatedText}
                 onChange={() => { }}
                 placeholder='Target language'
                 className='text-area'
                 language={state.targetLanguage}
-              />
+              /> :
+                <div className="loader">
+                  <span className="loader-text">
+                    Translating
+                    <span className="dot">.</span>
+                    <span className="dot">.</span>
+                    <span className="dot">.</span>
+                  </span>
+                </div>
+              }
             </div>
           </div>
         </div>
