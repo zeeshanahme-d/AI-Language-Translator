@@ -7,16 +7,17 @@ interface TextAreaProps {
     placeholder?: string;
     className?: string;
     language?: string;
+    isTranslatedText?: boolean;
 }
 
-const TextArea: React.FC<TextAreaProps> = ({ value, onChange, placeholder, className = "" ,language=""}) => {
+const TextArea: React.FC<TextAreaProps> = ({ value, onChange, placeholder, className = "", language = "", isTranslatedText = false }) => {
     return (
         <textarea
             value={value}
             onChange={onChange}
             placeholder={placeholder}
             className={className}
-            style={{textAlign: RightSideStartedLanguages.includes(language) ? "right" : "left"}}
+            style={{ textAlign: (RightSideStartedLanguages.includes(language) && isTranslatedText) ? "right" : "left" }}
         />
     );
 };
