@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './globleStyle.scss'
 import TextArea from './components/TextArea'
 import CustomSelect from './components/CustomSelect';
+import ButtonGroup from './components/ButtonGroup';
 const App: React.FC = () => {
 
   const [state, setState] = useState({
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     tottleCount: 2000,
   });
   const [loader, setLoader] = useState(false);
+
 
   useEffect(() => {
     if (state.text.trim() === '') {
@@ -78,6 +80,7 @@ const App: React.FC = () => {
                 className='text-area'
               />
               <div className='bottom-container'>
+                <ButtonGroup setState={setState} state={state}buttonsToHide={[]} />
                 <span className='counter' style={{ color: state.wordCount >= state.tottleCount ? "red" : "#fff" }}>{state.wordCount}/{state.tottleCount}</span>
               </div>
             </div>
