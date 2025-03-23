@@ -93,6 +93,7 @@ const App: React.FC = () => {
                 placeholder='Translation Text'
                 className='text-area'
                 language={state.targetLanguage}
+                isTranslatedText={!!state.translatedText}
               /> :
                 <div className="loader">
                   <span className="loader-text">
