@@ -4,6 +4,7 @@ import './globleStyle.scss'
 import TextArea from './components/TextArea'
 import CustomSelect from './components/CustomSelect';
 import ButtonGroup from './components/ButtonGroup';
+import TranslateLoader from './components/TranslateLoader';
 const App: React.FC = () => {
 
   const [state, setState] = useState({
@@ -80,7 +81,7 @@ const App: React.FC = () => {
                 className='text-area'
               />
               <div className='bottom-container'>
-                <ButtonGroup setState={setState} state={state}buttonsToHide={[]} />
+                <ButtonGroup setState={setState} state={state} buttonsToHide={[]} />
                 <span className='counter' style={{ color: state.wordCount >= state.tottleCount ? "red" : "#fff" }}>{state.wordCount}/{state.tottleCount}</span>
               </div>
             </div>
@@ -90,22 +91,17 @@ const App: React.FC = () => {
           <div className='text-area-container'>
             <CustomSelect onChange={(e: string) => { handleSelectLanguage(e, "targetLanguage") }} value={state.targetLanguage} />
             <div className='text-area-content'>
-              {!loader ? <TextArea
-                value={state.translatedText}
-                onChange={() => { }}
-                placeholder='Translation Text'
-                className='text-area'
-                language={state.targetLanguage}
-                isTranslatedText={!!state.translatedText}
-              /> :
-                <div className="loader">
-                  <span className="loader-text">
-                    Translating
-                    <span className="dot">.</span>
-                    <span className="dot">.</span>
-                    <span className="dot">.</span>
-                  </span>
-                </div>
+              {!loader ?
+                <TextArea
+                  value={state.translatedText}
+                  onChange={() => { }}
+                  placeholder='Translation Text'
+                  className='text-area'
+                  language={state.targetLanguage}
+                  isTranslatedText={!!state.translatedText}
+                />
+                :
+                <TranslateLoader />
               }
             </div>
           </div>
