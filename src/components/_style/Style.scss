@@ -1,0 +1,87 @@
+@import "../../utils//mixins.scss";
+
+//Custom Select Css
+.custom-select {
+    width: 100%;
+
+    .select {
+        width: 100%;
+        color: #f5f5f5;
+        padding: 0.75rem 0.45rem;
+        margin-bottom: 8px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #404040;
+        background: #171717;
+
+    }
+}
+
+//Button Group Css
+.button-group {
+    .custom-button {
+        padding: 4px 9px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: #404040;
+        color: #f5f5f5;
+
+        &:active {
+            opacity: .5;
+        }
+    }
+}
+
+//TextArea Css
+.text-area {
+    width: 100%;
+    height: 90%;
+    background: none;
+    border: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    resize: none;
+}
+
+//loader Css
+.loader {
+    .loader-text {
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .dot {
+            animation: blink 1.5s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

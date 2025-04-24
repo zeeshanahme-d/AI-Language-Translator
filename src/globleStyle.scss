@@ -16,19 +16,33 @@ body {
 
 .App {
     width: 100%;
-    height: 100dvh;
+    height: auto;
     background: url("./assets/background-image.png") no-repeat center center/cover;
     background-color: rgb(0 0 0 / 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include md {
+        height: 100vh;
+    }
 }
 
 .container {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 40px;
+    padding: 40px 16px;
+
+    @include sm {
+        padding: 40px 24px;
+    }
+
+    @include md {
+        padding: 40px;
+    }
 
     .heading {
         font-size: 2.25rem;
@@ -47,6 +61,12 @@ body {
     .subheading {
         margin-top: 0.75rem;
         color: #b0b0b0;
+        font-size: 14px;
+        text-align: center;
+
+        @include md {
+            font-size: 16px;
+        }
     }
 
     .content {
@@ -54,10 +74,15 @@ body {
         justify-content: center;
         gap: 16px;
         margin-top: 32px;
-        width: 90%;
+        width: 95%;
+        flex-wrap: wrap;
+
+        @include md {
+            flex-wrap: nowrap;
+        }
 
         .text-area-container {
-            flex: 0 0 50%;
+            flex: 1 0 50%;
             width: 50%;
 
             .error {
@@ -69,21 +94,12 @@ body {
                 width: 100%;
                 background: #171717;
                 border-radius: 8px;
-                height: 350px;
+                height: 250px;
                 border: 1px solid #404040;
                 padding: 0.75rem;
 
-                .text-area {
-                    width: 100%;
-                    height: 90%;
-                    background: none;
-                    border: none;
-                    border: none;
-                    outline: none;
-                    color: #fff;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 18px;
-                    resize: none;
+                @include md {
+                    height: 350px;
                 }
 
                 .bottom-container {
@@ -91,96 +107,8 @@ body {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-
-                    .button-group {
-                        .custom-button {
-                            padding: 4px 9px;
-                            border: none;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            font-size: 16px;
-                            transition: all 0.3s ease;
-                            background: #404040;
-                            color: #f5f5f5;
-
-                            &:active {
-                                opacity: .5;
-                            }
-                        }
-                    }
                 }
             }
-
-            .custom-select {
-                width: 100%;
-
-                .select {
-                    width: 100%;
-                    color: #f5f5f5;
-                    padding: 0.75rem 0.45rem;
-                    margin-bottom: 8px;
-                    font-size: 16px;
-                    border-radius: 8px;
-                    border: 1px solid #404040;
-                    background: #171717;
-
-                }
-            }
-
         }
-    }
-}
-
-.loader {
-    .loader-text {
-        font-size: 16px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-
-        .dot {
-            animation: blink 1.5s infinite;
-        }
-
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-    }
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes dotsAnimation {
-    0% {
-        content: "";
-    }
-
-    33% {
-        content: ".";
-    }
-
-    66% {
-        content: "..";
-    }
-
-    100% {
-        content: "...";
     }
 }
