@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SupportedLanguaes } from '../utils/Content';
+import "./_style/Style.scss";
 
 
 interface CustomSelectProps {

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./_style/Style.scss";
 
 interface ButtonGroupProps {
     buttonsToHide: string[];
@@ -18,7 +19,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonsToHide, setState, stat
     ]
 
     const handleClear = () => {
-        setState((prev: any) => ({ ...prev, text: '', }));
+        setState((prev: any) => ({ ...prev, text: '', textError: "", wordCount: 0 }));
     }
 
     return (

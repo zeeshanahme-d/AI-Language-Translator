@@ -1,5 +1,6 @@
 import React from 'react';
 import { RightSideStartedLanguages } from '../utils/Content';
+import "./_style/Style.scss";
 
 interface TextAreaProps {
     value: string;
