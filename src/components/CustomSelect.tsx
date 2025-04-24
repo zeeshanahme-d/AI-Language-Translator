@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { SupportedLanguaes } from '../utils/Content';
 import "./_style/Style.scss";
 
