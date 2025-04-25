@@ -64,6 +64,11 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonsToHide, setState, stat
             utterance.lang = languageObj.code;
             window.speechSynthesis.speak(utterance);
             setIsSpeaking(true);
+            // Add event listener for when the speech ends
+            utterance.onend = () => {
+                console.log("Speech has finished.");
+                setIsSpeaking(false); // Stop the speaking state
+            };
         } else {
             console.warn(`No matching voice found for ${languageObj.code}, using default`);
         }
