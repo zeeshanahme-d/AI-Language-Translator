@@ -1,5 +1,5 @@
 import React from 'react';
-import { SupportedLanguaes } from '../utils/Content';
+import { SupportedLanguages } from '../utils/Content';
 import "./_style/Style.scss";
 
 
@@ -13,7 +13,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ value = "", onChange }) => 
     return (
         <div className="custom-select">
             <select className='select' value={value} onChange={(e) => onChange(e.target.value)}>
-                {SupportedLanguaes.map((option) => (
+                {SupportedLanguages.map((option) => (
                     <option key={option.name} value={option.type}>
                         {option.name}
                     </option>
