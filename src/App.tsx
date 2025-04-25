@@ -81,7 +81,7 @@ const App: React.FC = () => {
                 className='text-area'
               />
               <div className='bottom-container'>
-                <ButtonGroup setState={setState} state={state} buttonsToHide={[]} />
+                <ButtonGroup setState={setState} state={state} buttonsToHide={[]} isTargetInput={false} />
                 <span className='counter' style={{ color: state.wordCount >= state.tottleCount ? "red" : "#fff" }}>{state.wordCount}/{state.tottleCount}</span>
               </div>
             </div>
@@ -92,14 +92,19 @@ const App: React.FC = () => {
             <CustomSelect onChange={(e: string) => { handleSelectLanguage(e, "targetLanguage") }} value={state.targetLanguage} />
             <div className='text-area-content'>
               {!loader ?
-                <TextArea
-                  value={state.translatedText}
-                  onChange={() => { }}
-                  placeholder='Translation Text'
-                  className='text-area'
-                  language={state.targetLanguage}
-                  isTranslatedText={!!state.translatedText}
-                />
+                <>
+                  <TextArea
+                    value={state.translatedText}
+                    onChange={() => { }}
+                    placeholder='Translation Text'
+                    className='text-area'
+                    language={state.targetLanguage}
+                    isTranslatedText={!!state.translatedText}
+                  />
+                  <div className='bottom-container'>
+                    <ButtonGroup setState={setState} state={state} buttonsToHide={["Clear"]} isTargetInput={true} />
+                  </div>
+                </>
                 :
                 <TranslateLoader />
               }
