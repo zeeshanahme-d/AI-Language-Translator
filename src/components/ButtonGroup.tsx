@@ -61,13 +61,12 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttonsToHide, setState, stat
 
         if (matchingVoice) {
             utterance.voice = matchingVoice;
+            utterance.lang = languageObj.code;
+            window.speechSynthesis.speak(utterance);
+            setIsSpeaking(true);
         } else {
             console.warn(`No matching voice found for ${languageObj.code}, using default`);
         }
-
-        utterance.lang = languageObj.code;
-        window.speechSynthesis.speak(utterance);
-        setIsSpeaking(true);
     };
 
     const handleCopy = () => {
